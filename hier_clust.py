@@ -29,9 +29,14 @@ Z = linkage(X, method=Method, metric=Metric)
 # Compute and display clusters by thresholding the dendrogram
 Maxclust = 2
 cls = fcluster(Z, criterion='maxclust', t=Maxclust)
-figure(1)
-clusterplot(X, cls.reshape(cls.shape[0],1), y=y)
-
+#figure(1)
+#clusterplot(X, cls.reshape(cls.shape[0],1), y=y)
+figure(figsize=(14,9))
+idx = [4,1] # feature index, choose two features to use as x and y axis in the plot
+clusterplot(X[:,idx], clusterid=cls, y=y)
+#ylabel("glucose")
+#xlabel("insulin")
+show()
 # Display dendrogram
 max_display_levels=6
 figure(2,figsize=(10,4))

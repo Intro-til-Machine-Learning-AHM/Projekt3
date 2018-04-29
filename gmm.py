@@ -2,6 +2,7 @@
 from matplotlib.pyplot import figure, show, ylabel, xlabel
 import numpy as np
 from scipy.io import loadmat
+from scipy import stats
 from toolbox_02450 import clusterplot
 from sklearn.mixture import GaussianMixture
 from toolbox_02450 import clusterval
@@ -23,7 +24,7 @@ C = len(classNames)
 K = 2
 cov_type = 'full'
 # type of covariance, you can try out 'diag' as well
-reps = 1
+reps = 5
 # number of fits with different initalizations, best result will be kept
 # Fit Gaussian mixture model
 gmm = GaussianMixture(n_components=K, covariance_type=cov_type, n_init=reps).fit(X)
