@@ -12,7 +12,7 @@ import pandas as pd
 data = pd.read_csv('data.csv')
 X = data.drop("class",axis=1)
 y = data['class']
-X = stats.zscore(X.as_matrix())
+X = stats.zscore(X.as_matrix(),ddof=1)
 y = y.as_matrix()
 attributeNames = list(X)
 classNames = ['Class 1','Class 2']

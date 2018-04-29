@@ -31,15 +31,48 @@ will most likely belong when having both low glucose and insulin (centered
 at the bottom left red star). Also, cluster 1 seems, in this plane, to be more
 an ellipsoid than a circle. Cluster 2 is more spread out and more circular, with
 center at higher glucose and insulin levels.
+Because only 2 attributes are presented in the plot, not all the variance is
+explained, which is why the clustering seems a bit inconsistent in 2 dimensions.
 
 \subsection{Hierarchical clustering}
 Hierarchical clustering is a deterministic way of clustering observations. The
 point is start off by assigning each observation to its own cluster and then
-merge clusters that are closest to each other. Before initializing the algorith,
-it is neccessary to  
+merge clusters that are closest to each other. Before initializing the algorithm,
+it is neccessary to specify how the distance between clusters is defined. In this
+report, the distance is defined by Ward's linkage function (page 236 in the
+book). The hierarchical clustering of the data, this time standardized can be seen
+below represented by a dendrogram with 6 levels:\\
+\includegraphics[width=\textwidth]{Figure_3.png}
+Outliers can usually be found by visual inspection of a dendrogram, where the
+outliers will join other clusters late. This is, however, difficult to see in
+this dendrogram, as the bottom is not visible. In general, the dendrogram seems
+quite symmetrical which is a good sign, and the longest vertical lines suggests
+2 clusters best describes the data. Plotted against the glucose and insulin attributes,
+the following scatter-plot emerges:\\
+\includegraphics[width=\textwidth]{Figure_4.png}
+Qualitatively, some of the same structures can be seen as in the scatter plot
+of the GMM. Again, some of the observations assigned to, say, cluster 2
+surrounded by cluster 1's must somehow be different in a direction not show
+on the scatter-plot.
 
+\subsection{Quality of clustering}
+In this section, the clusters' validity will be evaluated based on Rand statistic,
+Jaccard coefficient and Normalized Mutual Information (NMI). The hierarchical clustering
+will be cut off making 2 clusters (which, based on where the lonest vertical lines
+are in the dendrogram, seems reasonable) and will be compared to the GMM with
+Ward linkage. The table below gives an overview of the performances:\\
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccc}
+    & Rand & Jaccard & NMI\\
+GMM & 0.59 & 0.44 & 0.15 \\
+HC & 0.58 & 0.45 & 0.09 \\
+\end{tabular}
+%\caption{Clustering evaluation scores}
+\end{table}
 
-
+The Rand and Jaccard scores are almost the same, however, the NMI score is better
+for the GMM.
 
 \section{Outlierssssssssss}
 
