@@ -1,13 +1,10 @@
+
 import numpy as np
 from subprocess import run
 import re
 import os
 import time
 from sys import platform
-import sys
-import os
-print(sys.path)
-os.chdir("..\\..\\..\\02450Toolbox_Python\\Scripts")
 
 if platform.startswith('linux'): #== "linux" or platform == "linux2":
     ext = ''  # Linux
@@ -21,14 +18,14 @@ elif platform.startswith('win'): #== "win32":
 else:
     raise NotImplementedError()
 
-filename = '..\\Data\\courses.txt'.format(dir_sep)
-minSup = 80
+filename = 'FatBinarizedIndians.txt'.format(dir_sep)
+minSup = 50
 minConf = 100
 maxRule = 4
 
 # Run Apriori Algorithm
 print('Mining for frequent itemsets by the Apriori algorithm')
-status1 = run('..{0}Tools{0}apriori{1} -f"," -s{2} -v"[Sup. %S]" {3} apriori_temp1.txt'
+status1 = run('.{0}apriori{1} -f"," -s{2} -v"[Sup. %S]" {3} apriori_temp1.txt'
               .format(dir_sep, ext, minSup, filename ), shell=True)
 
 if status1.returncode != 0:
@@ -37,7 +34,7 @@ if status1.returncode != 0:
     exit()
 if minConf > 0:
     print('Mining for associations by the Apriori algorithm')
-    status2 = run('..{0}Tools{0}apriori{1} -tr -f"," -n{2} -c{3} -s{4} -v"[Conf. %C,Sup. %S]" {5} apriori_temp2.txt'
+    status2 = run('.{0}apriori{1} -tr -f"," -n{2} -c{3} -s{4} -v"[Conf. %C,Sup. %S]" {5} apriori_temp2.txt'
                   .format(dir_sep, ext, maxRule, minConf, minSup, filename ), shell=True)
 
     if status2.returncode != 0:
