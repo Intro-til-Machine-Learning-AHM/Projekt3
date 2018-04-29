@@ -8,7 +8,7 @@ import pandas as pd
 
 # Load Matlab data file and extract variables of interest
 #mat_data = loadmat('..\\..\\..\\02450Toolbox_Python\\Data\\synth1.mat')
-data = pd.read_csv('..\\Projekt3\\data.csv')
+data = pd.read_csv('data.csv')
 X = data.drop("class",axis=1)
 y = data['class']
 X = stats.zscore(X.as_matrix())

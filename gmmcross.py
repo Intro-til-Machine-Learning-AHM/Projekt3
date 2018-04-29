@@ -6,11 +6,10 @@ from sklearn.mixture import GaussianMixture
 from sklearn import model_selection
 import pandas as pd
 import os
-print(os.getcwd())
 
 # Load Matlab data file and extract variables of interest
 #mat_data = loadmat('..\\..\\..\\02450Toolbox_Python\\Data\\synth1.mat')
-data = pd.read_csv('..\\Projekt3\\data.csv')
+data = pd.read_csv('data.csv')
 X = data.drop("class",axis=1)
 y = data['class']
 X = X.as_matrix()
