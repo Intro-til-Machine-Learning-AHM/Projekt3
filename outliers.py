@@ -65,3 +65,13 @@ plot.title('KNN average relative densities')
 plot.bar(range(X.shape[0]), knn_avg_rel_density, width = 1)
 plot.savefig("pics/knn_avg_rel_densities.png")
 
+knn_avg_rel_mask = knn_avg_rel_sort[knn_avg_rel_density < 0.58]
+knn_mask = knn_sort[knn_density < 0.2]
+
+print("Outliers as per KNN avg rel densities")
+print(data.iloc[knn_avg_rel_mask])
+print(X[knn_avg_rel_mask])
+
+print("Outliers as per KNN densities")
+print(data.iloc[knn_mask])
+print(X[knn_mask])
