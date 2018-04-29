@@ -4,6 +4,7 @@ import numpy as np
 from scipy.io import loadmat
 from toolbox_02450 import clusterplot
 from sklearn.mixture import GaussianMixture
+from toolbox_02450 import clusterval
 import pandas as pd
 
 # Load Matlab data file and extract variables of interest
@@ -56,5 +57,8 @@ clusterplot(X[:,idx], clusterid=cls, centroids=cds[:,idx], y=y, covars=covs[:,id
 ylabel("glucose")
 xlabel("insulin")
 show()
+
+Rand, Jaccard, NMI = clusterval(y,cls)
+print(Rand,Jaccard,NMI)
 
 print('Ran Exercise 11.1.1')

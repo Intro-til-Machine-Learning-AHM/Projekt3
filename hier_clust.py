@@ -4,6 +4,7 @@ from scipy.io import loadmat
 from scipy import stats
 from toolbox_02450 import clusterplot
 from scipy.cluster.hierarchy import linkage, fcluster, dendrogram
+from toolbox_02450 import clusterval
 import pandas as pd
 
 # Load Matlab data file and extract variables of interest
@@ -12,7 +13,7 @@ data = pd.read_csv('data.csv')
 X = data.drop("class",axis=1)
 y = data['class']
 X = stats.zscore(X.as_matrix())
-y = stats.zscore(y.as_matrix())
+y = y.as_matrix()
 attributeNames = list(X)
 classNames = ['Class 1','Class 2']
 N, M = X.shape
@@ -20,7 +21,7 @@ C = len(classNames)
 
 
 # Perform hierarchical/agglomerative clustering on data matrix
-Method = 'single'
+Method = 'ward'
 Metric = 'euclidean'
 
 Z = linkage(X, method=Method, metric=Metric)
@@ -37,5 +38,8 @@ figure(2,figsize=(10,4))
 dendrogram(Z, truncate_mode='level', p=max_display_levels)
 
 show()
+
+Rand, Jaccard, NMI = clusterval(y,cls)
+print(Rand,Jaccard,NMI)
 
 print('Ran Exercise 10.2.1')
