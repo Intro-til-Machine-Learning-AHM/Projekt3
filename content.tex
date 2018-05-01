@@ -14,13 +14,14 @@ observation is assigned to.\\
 The first thing to do is find out the amount of clusters the GMM should aim for.
 This is done with cross-validation (where the negative log-likehood should be
 as low as possibe), Akaike's information Criterion (AIC) and Bayesian Information
-Criterion (BIC). AIC and BIC should be low as well, so the following plot, showing
+Criterion (BIC). AIC and BIC should be low as well, so Figure \ref{cv}, showing
 cross-validation, AIC and BIC for different amount of clusters, is helpful when
 determining number of clusters.\\
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_1.png}
-  \caption{TODO caption}
+  \caption{BIC, AIC and crossvalidation for different numbers of clusters}
+  \label{cv}
 \end{figure}
 The BIC and negative log-likelihood are both low at k=2, while AIC continues
 decreasing up to k=10. The BIC and AIC penalize model complexity in different ways,
@@ -29,11 +30,12 @@ k=2 is used for the modelling in this section. It could be argued with reference
 that the number of clusters should be higher, but this take will not be considered here.\\
 The 2 clusters projected down on the 2 attributes explaining the higest amount
 of variance (insulin and glucose, responsible for more than 95\% of the total
-variance) can be seen below:\\
+variance) can be seen in Figure \ref{gmm}.\\
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_2.png}
-  \caption{TODO caption}
+  \caption{GMM clustering in 2 dimensions}
+  \label{gmm}
 \end{figure}
 Qualitatively inspecting the data shows cluster 1 (red circles), which one
 will most likely belong when having both low glucose and insulin (centered
@@ -45,7 +47,10 @@ Because only 2 attributes are presented in the plot, not all the variance is
 explained, which is why the clustering seems a bit inconsistent in 2 dimensions.
 Plotting against the first and second principal components could show the clusters better
 in 2 dimensions but might be harder to interpret. In the 8-dimensional space, the centers
-of the clusters have the following coordinates:\\
+of the clusters have the coordinates presented in Table \ref{cent}. \\
+This table shows that the centers of the two clusters also are placed very differently
+in the age direction and in the pregnancies direction, where both values are
+higher for the centre of cluster 0.\\
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccccccc}
@@ -53,11 +58,9 @@ of the clusters have the following coordinates:\\
 $\mu$_0 & 4.96 & 138.95 & 74.51 & 31.36 & 210.28 & 34.59 & 0.61 & 37.56 \\
 $\mu$_1 & 1.71 & 107.04 & 66.99 & 27.03 & 104.26 & 31.65 & 0.44 & 24.57 \\
 \end{tabular}
-%\caption{Clustering evaluation scores}
+\caption{Centroids coordinates}
+\label{cent}
 \end{table}
-This table shows that the centers of the two clusters also are placed very differently
-in the age direction and in the pregnancies direction, where both values are
-higher for the centre of cluster 0.
 
 \subsection{Hierarchical clustering}
 Hierarchical clustering is a deterministic way of clustering observations. The
@@ -68,25 +71,27 @@ report, the distance is defined by Ward's linkage function (which minimizes
 the sum-of-squares between each point and the centre of its assigned cluster).
 Other linkage functions were considered, but did not perform as well as Ward.
 The hierarchical clustering of the data, this time standardized, can be seen
-below represented by a dendrogram with 6 levels:\\
+in Figure \ref{dendrogram} represented by a dendrogram with 6 levels.\\
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_3.png}
-  \caption{TODO caption}
+  \caption{Merging of clusters illustrated with a dendrogram}
+  \label{dendrogram}
 \end{figure}
 Outliers can usually be found by visual inspection of a dendrogram, where the
 outliers will join other clusters late. This is, however, difficult to see in
 this dendrogram, as the bottom is not visible. In general, the dendrogram seems
 quite symmetrical which is a good sign, and the longest vertical lines suggests
 2 clusters best describes the data. Plotted against the glucose and insulin attributes,
-the following scatter-plot emerges:\\
+the scatter-plot in Figure \ref{hc} emerges.\\
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_4.png}
-  \caption{TODO caption}
+  \caption{HC in 2 dimensions}
+  \label{hc}
 \end{figure}
 Qualitatively, some of the same structures can be seen as in the scatter plot
-of the GMM. Again, some of the observations assigned to, say, cluster 2
+of the GMM. Again, some of the observations assigned to, say, cluster 0
 surrounded by cluster 1's must somehow be different in a direction not show
 on the scatter-plot.
 
@@ -99,7 +104,7 @@ compared to the GMM. Both models produce two clusters. These clusters' similarit
 with the "clustering" of the label of the data (here, the binary attribute telling
 whether a patient is sick or nor) will be used to determine the quality of validity
 of the GMM and hierarchical clustering.\\
- The table below gives an overview of the performances:\\
+ Table \ref{clusteval} gives an overview of the performances:\\
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccc}
@@ -107,7 +112,8 @@ of the GMM and hierarchical clustering.\\
 GMM & 0.59 & 0.44 & 0.15 \\
 HC & 0.58 & 0.45 & 0.09 \\
 \end{tabular}
-%\caption{Clustering evaluation scores}
+\caption{Clustering evaluation scores}
+\label{clusteval}
 \end{table}
 
 The Rand score or the Rand index is defined as the sum of object pairs with
@@ -316,24 +322,16 @@ This would also make sense biologically.
 
 
 
-\appendix
-\section{Distribution of responsibilities}
-\begin{table}[]
+
+\begin{table}[H]
 \centering
 \caption{My caption}
 \label{my-label}
 \begin{tabular}{ll}
 \hline
 \multicolumn{2}{|l|}{Work distribution} \\ \hline
-1              & Andreas                \\
-2              & Marcus                 \\
-3              & Hildibjørg
+Part 1              & Andreas                \\
+Part 2              & Marcus                 \\
+Part 3              & Hildibjørg
 \end{tabular}
 \end{table}
-\subsection{Clustering}
-
-\subsection{Outlier detection/Anomaly detection}
-
-\subsection{Association mining}
-
-\subsection{Previous work}
