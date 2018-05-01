@@ -19,28 +19,45 @@ cross-validation, AIC and BIC for different amount of clusters, is helpful when
 determining number of clusters.\\
 \includegraphics[width=\textwidth]{Figure_1.png}
 The BIC and negative log-likelihood are both low at k=2, while AIC continues
-decreasing up to k=10. The two criterions penalize model complexity in different ways,
+decreasing up to k=10. The BIC and AIC penalize model complexity in different ways,
 and it is often the case that AIC prefers the more complex model. With this in mind,
-k=2 is used for the modelling in this section.\\
+k=2 is used for the modelling in this section. It could be argued with reference to AIC
+that the number of clusters should be higher, but this take will not be considered here.\\
 The 2 clusters projected down on the 2 attributes explaining the higest amount
-of variance (insulin and glucose, responsible for more than 95\% of the total
-variance) can be seen below:\\
+of variance (insulin and glucose) can be seen below:\\
 \includegraphics[width=\textwidth]{Figure_2.png}
 Qualitatively inspecting the data shows cluster 1 (red circles), which one
 will most likely belong when having both low glucose and insulin (centered
 at the bottom left red star). Also, cluster 1 seems, in this plane, to be more
-an ellipsoid than a circle. Cluster 2 is more spread out and more circular, with
+an ellipsoid than a circle. Cluster 0 is more spread out and more circular, with
 center at higher glucose and insulin levels.
 Because only 2 attributes are presented in the plot, not all the variance is
 explained, which is why the clustering seems a bit inconsistent in 2 dimensions.
+Plotting against the first and second principal components could show the clusters better
+in 2 dimensions but might be harder to interpret. In the 8-dimensional space, the centers
+of the clusters have the following coordinates:\\
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccccccc}
+    & pregnancies & glucose & bp & thickness & insulin & bmi & diapedig & age\\
+$\mu$_0 & 4.96 & 138.95 & 74.51 & 31.36 & 210.28 & 34.59 & 0.61 & 37.56 \\
+$\mu$_1 & 1.71 & 107.04 & 66.99 & 27.03 & 104.26 & 31.65 & 0.44 & 24.57 \\
+\end{tabular}
+%\caption{Clustering evaluation scores}
+\end{table}
+This table shows that the centers of the two clusters also are placed very differently
+in the age direction and in the pregnancies direction, where both values are
+higher for the centre of cluster 0.
 
 \subsection{Hierarchical clustering}
 Hierarchical clustering is a deterministic way of clustering observations. The
 point is start off by assigning each observation to its own cluster and then
 merge clusters that are closest to each other. Before initializing the algorithm,
 it is neccessary to specify how the distance between clusters is defined. In this
-report, the distance is defined by Ward's linkage function (page 236 in the
-book). The hierarchical clustering of the data, this time standardized can be seen
+report, the distance is defined by Ward's linkage function (which minimizes
+the sum-of-squares between each point and the centre of its assigned cluster).
+Other linkage functions were considered, but did not perform as well as Ward.
+The hierarchical clustering of the data, this time standardized, can be seen
 below represented by a dendrogram with 6 levels:\\
 \includegraphics[width=\textwidth]{Figure_3.png}
 Outliers can usually be found by visual inspection of a dendrogram, where the
@@ -52,15 +69,19 @@ the following scatter-plot emerges:\\
 \includegraphics[width=\textwidth]{Figure_4.png}
 Qualitatively, some of the same structures can be seen as in the scatter plot
 of the GMM. Again, some of the observations assigned to, say, cluster 2
-surrounded by cluster 1's must somehow be different in a direction not show
+surrounded by cluster 1's must somehow be different in a direction not shown
 on the scatter-plot.
 
 \subsection{Quality of clustering}
 In this section, the clusters' validity will be evaluated based on Rand statistic,
-Jaccard coefficient and Normalized Mutual Information (NMI). The hierarchical clustering
-will be cut off making 2 clusters (which, based on where the lonest vertical lines
-are in the dendrogram, seems reasonable) and will be compared to the GMM with
-Ward linkage. The table below gives an overview of the performances:\\
+Jaccard coefficient and Normalized Mutual Information (NMI). The hierarchical clustering,
+using Ward linkage, will be cut off making 2 clusters (which, based on where the
+longest vertical lines are in the dendrogram, seems reasonable) and then
+compared to the GMM. Both models produce two clusters. These clusters' similarity
+with the "clustering" of the label of the data (here, the binary attribute telling
+whether a patient is sick or nor) will be used to determine the quality of validity
+of the GMM and hierarchical clustering.\\
+ The table below gives an overview of the performances:\\
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccc}
@@ -71,8 +92,19 @@ HC & 0.58 & 0.45 & 0.09 \\
 %\caption{Clustering evaluation scores}
 \end{table}
 
-The Rand and Jaccard scores are almost the same, however, the NMI score is better
-for the GMM.
+The Rand score or the Rand index is defined as the sum of object pairs with
+the same label assigned to the same cluster and object pairs with different
+labels assigned to different clusters divided by the total number of pairs. The
+Jaccard score or the Jaccard index is similar, however, the number of object
+pairs with different labels assigned to different clusters are subtracted from
+the denominator rather than added to the numerator, assigning (usually) less
+importance to observations scattered in many clusters. Judging from Rand and
+Jaccard, the two models cluster equally well.\\
+NMI is quite low for both kinds of clustering. This number tells something about
+how informative to partitions are about each other and should be 1 if the clustering
+catches the labels spot on. This number is a bit higer for the GMM than for the hierarchical
+clustering, but is still low enough to not place too much confidence in trusting either
+of these two models to represent the labels with their clustering.
 
 \section{Outlierssssssssss}
 
@@ -108,11 +140,15 @@ for the GMM.
 
 \appendix
 \section{Distribution of responsibilities}
-\subsection{Clustering}
-
-\subsection{Outlier detection/Anomaly detection}
-
-\subsection{Association mining}
-
-\subsection{Previous work}
-By Hildibjørg.
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{|l|}{Work distribution} \\ \hline
+1              & Andreas                \\
+2              & Marcus                 \\
+3              & Hildibjørg
+\end{tabular}
+\end{table}

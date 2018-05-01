@@ -12,13 +12,14 @@ import pandas as pd
 #mat_data = loadmat('..\\..\\..\\02450Toolbox_Python\\Data\\synth1.mat')
 data = pd.read_csv('data.csv')
 X = data.drop("class",axis=1)
+attributeNames = list(X)
 y = data['class']
 X = X.as_matrix()
 y = y.as_matrix()
-attributeNames = list(X)
 classNames = ['Class 1','Class 2']
 N, M = X.shape
 C = len(classNames)
+
 
 # Number of clusters
 K = 2
@@ -61,5 +62,8 @@ show()
 
 Rand, Jaccard, NMI = clusterval(y,cls)
 print(Rand,Jaccard,NMI)
+print(type(y))
+print(y)
+print(attributeNames)
 
 print('Ran Exercise 11.1.1')
