@@ -17,7 +17,11 @@ as low as possibe), Akaike's information Criterion (AIC) and Bayesian Informatio
 Criterion (BIC). AIC and BIC should be low as well, so the following plot, showing
 cross-validation, AIC and BIC for different amount of clusters, is helpful when
 determining number of clusters.\\
-\includegraphics[width=\textwidth]{Figure_1.png}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{Figure_1.png}
+  \caption{TODO caption}
+\end{figure}
 The BIC and negative log-likelihood are both low at k=2, while AIC continues
 decreasing up to k=10. The two criterions penalize model complexity in different ways,
 and it is often the case that AIC prefers the more complex model. With this in mind,
@@ -25,7 +29,11 @@ k=2 is used for the modelling in this section.\\
 The 2 clusters projected down on the 2 attributes explaining the higest amount
 of variance (insulin and glucose, responsible for more than 95\% of the total
 variance) can be seen below:\\
-\includegraphics[width=\textwidth]{Figure_2.png}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{Figure_2.png}
+  \caption{TODO caption}
+\end{figure}
 Qualitatively inspecting the data shows cluster 1 (red circles), which one
 will most likely belong when having both low glucose and insulin (centered
 at the bottom left red star). Also, cluster 1 seems, in this plane, to be more
@@ -42,14 +50,22 @@ it is neccessary to specify how the distance between clusters is defined. In thi
 report, the distance is defined by Ward's linkage function (page 236 in the
 book). The hierarchical clustering of the data, this time standardized can be seen
 below represented by a dendrogram with 6 levels:\\
-\includegraphics[width=\textwidth]{Figure_3.png}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{Figure_3.png}
+  \caption{TODO caption}
+\end{figure}
 Outliers can usually be found by visual inspection of a dendrogram, where the
 outliers will join other clusters late. This is, however, difficult to see in
 this dendrogram, as the bottom is not visible. In general, the dendrogram seems
 quite symmetrical which is a good sign, and the longest vertical lines suggests
 2 clusters best describes the data. Plotted against the glucose and insulin attributes,
 the following scatter-plot emerges:\\
-\includegraphics[width=\textwidth]{Figure_4.png}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{Figure_4.png}
+  \caption{TODO caption}
+\end{figure}
 Qualitatively, some of the same structures can be seen as in the scatter plot
 of the GMM. Again, some of the observations assigned to, say, cluster 2
 surrounded by cluster 1's must somehow be different in a direction not show
