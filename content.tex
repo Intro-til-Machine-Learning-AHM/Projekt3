@@ -148,6 +148,19 @@ where there is a sharper falloff at the lower densities.
   \label{fig:knn}
 \end{figure}
 
+The density and average relative density are qualitatively rather similar,
+as seen on figures \ref{fig:knn} and \ref{fig:knn-avg-rel}, respectively.
+Sorted by density,
+most points have only slightly different densities than the points
+above and below them.
+However, there is a sharp falloff,
+with a handful of the points located at the lowest densities
+suddenly ``dropping off the density curve''
+that the other points seem to follow.
+These are the points we consider to be outliers.
+For the density, respectively average relative density,
+this occurs at $0.2$, respectively $0.6$.
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{knn_avg_rel_densities}
