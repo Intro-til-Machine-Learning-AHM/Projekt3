@@ -17,7 +17,7 @@ as low as possibe), Akaike's information Criterion (AIC) and Bayesian Informatio
 Criterion (BIC). AIC and BIC should be low as well, so the following plot, showing
 cross-validation, AIC and BIC for different amount of clusters, is helpful when
 determining number of clusters.\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_1.png}
   \caption{TODO caption}
@@ -30,7 +30,7 @@ that the number of clusters should be higher, but this take will not be consider
 The 2 clusters projected down on the 2 attributes explaining the higest amount
 of variance (insulin and glucose, responsible for more than 95\% of the total
 variance) can be seen below:\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_2.png}
   \caption{TODO caption}
@@ -69,7 +69,7 @@ the sum-of-squares between each point and the centre of its assigned cluster).
 Other linkage functions were considered, but did not perform as well as Ward.
 The hierarchical clustering of the data, this time standardized, can be seen
 below represented by a dendrogram with 6 levels:\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_3.png}
   \caption{TODO caption}
@@ -80,7 +80,7 @@ this dendrogram, as the bottom is not visible. In general, the dendrogram seems
 quite symmetrical which is a good sign, and the longest vertical lines suggests
 2 clusters best describes the data. Plotted against the glucose and insulin attributes,
 the following scatter-plot emerges:\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_4.png}
   \caption{TODO caption}
@@ -125,7 +125,7 @@ clustering, but is still low enough to not place too much confidence in trusting
 of these two models to represent the labels with their clustering.
 
 \section{Outliers}
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{kde_densities}
   \caption{Density at our data points as estimated by KDE}
@@ -141,14 +141,14 @@ we will be judging outliers based on the
 density estimates by KNN,
 where there is a sharper falloff at the lower densities.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{knn_densities}
   \caption{Density at our data points as estimated by KNN}
   \label{fig:knn}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{knn_avg_rel_densities}
   \caption{Average relative density at our data points as estimated by KNN}
