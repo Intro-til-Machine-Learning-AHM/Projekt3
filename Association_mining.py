@@ -27,7 +27,7 @@ else:
 
 filename = 'FatBinarizedIndians.txt'.format(dir_sep)
 minSup = 40
-minConf = 100
+minConf = 85
 maxRule = 4
 
 # Run Apriori Algorithm
@@ -90,4 +90,3 @@ print('\n')
 print('Association rules:')
 for i, item in enumerate(AssocRulesSorted):
     print('Rule: {0}'.format(item))
-
