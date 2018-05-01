@@ -19,7 +19,7 @@ else:
     raise NotImplementedError()
 
 filename = 'FatBinarizedIndians.txt'.format(dir_sep)
-minSup = 50
+minSup = 50 #60 er minimum
 minConf = 100
 maxRule = 4
 
