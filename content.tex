@@ -160,6 +160,10 @@ that the other points seem to follow.
 These are the points we consider to be outliers.
 For the density, respectively average relative density,
 this occurs at $0.2$, respectively $0.6$.
+Another point that might be chosen as a cutoff is
+the point where the curves seem to momentarily flatten before continuing.
+However, this would lead to a far greater number of outliers,
+we have chosen the stricter cutoff.
 
 \begin{figure}[htbp]
   \centering
@@ -167,6 +171,37 @@ this occurs at $0.2$, respectively $0.6$.
   \caption{Average relative density at our data points as estimated by KNN}
   \label{fig:knn-avg-rel}
 \end{figure}
+
+As the set of outliers according to the relative density
+is a subset of
+the set of outliers according to the average relative density,
+and because the additional points included seem, intuitively, like outliers
+(e.g. the woman who has had 17 pregnancies),
+we will be looking at the larger set only.
+
+For a table of the outliers, refer to table \ref{tab:outliers}.
+
+\begin{table}[hbp]
+\begin{tabular}{rrrrrrrrr}
+pregs & glucose & bp & thickness & insulin & bmi & dia\textunderscore{}pedig & age & class\\
+  \hline
+0 & 180 & 78 & 63 & 14 & 59.4 & 2.420 & 25 & 1\\
+4 & 197 & 70 & 39 & 744 & 36.7 & 2.329 & 31 & 0\\
+1 & 189 & 60 & 23 & 846 & 30.1 & 0.398 & 59 & 1\\
+0 & 137 & 40 & 35 & 168 & 43.1 & 2.288 & 33 & 1\\
+0 & 129 & 110 & 46 & 130 & 67.1 & 0.319 & 26 & 1\\
+3 & 173 & 82 & 48 & 465 & 38.4 & 2.137 & 25 & 1\\
+0 & 165 & 90 & 33 & 680 & 52.3 & 0.427 & 23 & 0\\
+1 & 88 & 30 & 42 & 99 & 55.0 & 0.496 & 26 & 1\\
+9 & 134 & 74 & 33 & 60 & 25.9 & 0.460 & 81 & 0\\
+17 & 163 & 72 & 41 & 114 & 40.9 & 0.817 & 47 & 1\\
+6 & 129 & 90 & 7 & 326 & 19.6 & 0.582 & 60 & 0\\
+2 & 197 & 70 & 45 & 543 & 30.5 & 0.158 & 53 & 1\\
+\end{tabular}
+\caption{Outliers according to average relative density computed by KNN}
+\label{tab:outliers}
+\end{table}
+
 
 \section{Association Mining}
 
