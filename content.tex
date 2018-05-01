@@ -17,7 +17,7 @@ as low as possibe), Akaike's information Criterion (AIC) and Bayesian Informatio
 Criterion (BIC). AIC and BIC should be low as well, so Figure \ref{cv}, showing
 cross-validation, AIC and BIC for different amount of clusters, is helpful when
 determining number of clusters.\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_1.png}
   \caption{BIC, AIC and crossvalidation for different numbers of clusters}
@@ -31,7 +31,7 @@ that the number of clusters should be higher, but this take will not be consider
 The 2 clusters projected down on the 2 attributes explaining the higest amount
 of variance (insulin and glucose, responsible for more than 95\% of the total
 variance) can be seen in Figure \ref{gmm}.\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_2.png}
   \caption{GMM clustering in 2 dimensions}
@@ -72,7 +72,7 @@ the sum-of-squares between each point and the centre of its assigned cluster).
 Other linkage functions were considered, but did not perform as well as Ward.
 The hierarchical clustering of the data, this time standardized, can be seen
 in Figure \ref{dendrogram} represented by a dendrogram with 6 levels.\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_3.png}
   \caption{Merging of clusters illustrated with a dendrogram}
@@ -84,7 +84,7 @@ this dendrogram, as the bottom is not visible. In general, the dendrogram seems
 quite symmetrical which is a good sign, and the longest vertical lines suggests
 2 clusters best describes the data. Plotted against the glucose and insulin attributes,
 the scatter-plot in Figure \ref{hc} emerges.\\
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figure_4.png}
   \caption{HC in 2 dimensions}
@@ -131,22 +131,34 @@ clustering, but is still low enough to not place too much confidence in trusting
 of these two models to represent the labels with their clustering.
 
 \section{Outliers}
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{kde_densities}
   \caption{Density at our data points as estimated by KDE}
+  \label{fig:kde}
 \end{figure}
 
-\begin{figure}[htb]
+The KDE plot, figure \ref{fig:kde},
+doesn't tell us much,
+the falloff is too smooth
+for there to be an obvious cutoff.
+As such,
+we will be judging outliers based on the
+density estimates by KNN,
+where there is a sharper falloff at the lower densities.
+
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{knn_densities}
   \caption{Density at our data points as estimated by KNN}
+  \label{fig:knn}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{knn_avg_rel_densities}
   \caption{Average relative density at our data points as estimated by KNN}
+  \label{fig:knn-avg-rel}
 \end{figure}
 
 \section{Association Mining}
